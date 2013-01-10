@@ -3,6 +3,8 @@
 
 <hibernate-configuration>
     <session-factory>
+        <mapping class="org.appfuse.model.User"/>
+        <mapping class="org.appfuse.model.Role"/>
         <mapping class="com.zzvc.mmps.model.Player" />
         <mapping class="com.zzvc.mmps.model.PlayerKey" />
         <mapping class="com.zzvc.mmps.model.PlayerKeyValue" />
