@@ -1,3 +1,4 @@
-mmps-player-data-1.2.0-SNAPSHOT
- + Initial commit
+mmps-player-data-2.0
+ + User and role db management are moved from mmps-db
+ + Optimize db plugins
 
