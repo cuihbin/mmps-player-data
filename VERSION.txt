@@ -1,6 +1,6 @@
 mmps-player-data-2.1
  + Upgrade to mmps-db-2.2
- + Change to mmps-parent-2.0
+ + Change to mmps-parent-2.0.1
 
 mmps-player-data-2.0
  + User and role db management are moved from mmps-db
