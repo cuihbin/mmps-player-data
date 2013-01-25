@@ -1,3 +1,6 @@
+mmps-player-data-2.1.1
+ + Fixed adding server failed for null name
+
 mmps-player-data-2.1
  + Upgrade to mmps-db-2.2
  + Change to mmps-parent-2.0.1

@@ -6,6 +6,7 @@ import java.util.List;
 import org.appfuse.dao.hibernate.GenericDaoHibernate;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
+import org.springframework.util.StringUtils;
 
 import com.zzvc.mmps.dao.ServerDao;
 import com.zzvc.mmps.model.Server;
@@ -31,7 +32,7 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 
 	@Override
 	public void reportStartup(String code, String address) {
-		Server server = findUniqueByCode(code);
+		Server server = findUniqueByCode(code, address);
 		if (server == null) {
 			return;
 		}
@@ -45,7 +46,7 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 
 	@Override
 	public void reportHeartbeat(String code, String address) {
-		Server server = findUniqueByCode(code);
+		Server server = findUniqueByCode(code, address);
 		if (server == null) {
 			return;
 		}
@@ -61,7 +62,7 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 
 	@Override
 	public void reportShutdown(String code, String address) {
-		Server server = findUniqueByCode(code);
+		Server server = findUniqueByCode(code, address);
 
 		if (server.getLastConnectAddress() == null
 				|| server.getLastConnectAddress().equals(address)) {
@@ -72,16 +73,24 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 		}
 	}
 	
-	private Server findUniqueByCode(String code) {
+	private Server findUniqueByCode(String code, String address) {
 		List<Server> servers = findByCode(code);
-		if (!servers.isEmpty()) {
-			return servers.get(0);
+		for (Server server : servers) {
+			if (address.equals(server.getLastConnectAddress())) {
+				return server;
+			}
+		}
+		
+		for (Server server : servers) {
+			if (!StringUtils.hasText(server.getLastConnectAddress())) {
+				return server;
+			}
 		}
 		
 		Server server = new Server();
 		server.setCode(code);
+		server.setName("");
 		server.setEnabled(false);
 		return server;
 	}
-
 }
