@@ -17,11 +17,14 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 		super(Server.class);
 	}
 	
+	@Override
+	@SuppressWarnings("unchecked")
 	public List<Server> findByCode(String code) {
 		return getSession().createCriteria(Server.class).add(Restrictions.eq("code", code)).list();
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Server> findByHeartbeatBefore(Date time) {
 		return getSession().createCriteria(Server.class).add(Restrictions.or(Restrictions.isNull("lastHeartbeat"), Restrictions.le("lastHeartbeat", time))).add(Restrictions.eq("enabled", true)).list();
 	}
