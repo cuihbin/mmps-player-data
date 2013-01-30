@@ -1,3 +1,6 @@
+mmps-player-data-2.1.2
+ + Fixed exception not throw as expected when searching a none-exists player address
+
 mmps-player-data-2.1.1
  + Fixed adding server failed for null name
 

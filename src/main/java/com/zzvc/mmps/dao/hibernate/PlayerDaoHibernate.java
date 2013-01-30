@@ -23,7 +23,7 @@ public class PlayerDaoHibernate extends GenericDaoHibernate<Player, Long> implem
 	public Player findByAddress(String address) {
 		List<Player> players = getSession().createCriteria(Player.class).add(Restrictions.eq("address", address)).list();
 		if (players.isEmpty()) {
-			new ObjectRetrievalFailureException("Cannot find player with address '" + address + "'", null);
+			throw new ObjectRetrievalFailureException("Cannot find player with address '" + address + "'", null);
 		}
 		return players.get(0);
 	}
