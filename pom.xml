@@ -20,7 +20,7 @@
     <connection>scm:git:git@github.com:cuihbin/mmps-player-data.git</connection>
     <developerConnection>scm:git:git@github.com:cuihbin/mmps-player-data.git</developerConnection>
     <url>https://github.com/cuihbin</url>
-    <tag>mmps-player-data-2.1.1</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
