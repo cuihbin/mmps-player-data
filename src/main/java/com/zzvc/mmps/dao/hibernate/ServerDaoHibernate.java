@@ -28,4 +28,10 @@ public class ServerDaoHibernate extends GenericDaoHibernate<Server, Long> implem
 	public List<Server> findByHeartbeatBefore(Date time) {
 		return getSession().createCriteria(Server.class).add(Restrictions.or(Restrictions.isNull("lastHeartbeat"), Restrictions.le("lastHeartbeat", time))).add(Restrictions.eq("enabled", true)).list();
 	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<Server> findAll() {
+		return getSession().createCriteria(Server.class).add(Restrictions.eq("enabled", true)).list();
+	}
 }
