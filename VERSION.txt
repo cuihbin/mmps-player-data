@@ -1,3 +1,6 @@
+mmps-player-data-2.2
+ + Remove methods that should not be placed in ServerDao interface
+
 mmps-player-data-2.1.2
  + Fixed exception not throw as expected when searching a none-exists player address
 
